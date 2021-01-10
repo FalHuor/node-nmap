@@ -108,7 +108,7 @@ function convertRawJsonToScanResults(xmlInput) {
 
 
 class NmapScan extends EventEmitter {
-  constructor(range, inputArguments) {
+  constructor(range, inputArguments, {sudo, sudoArgs}) {
     super();
     this.command = [];
     this.nmapoutputXML = '';
@@ -123,6 +123,16 @@ class NmapScan extends EventEmitter {
     this.error = null;
     this.scanResults;
     this.scanTimeout = 0;
+
+    if (sudo) {
+      this.arguments.unshift(nmap.nmapLocation);
+
+      if (sudoArgs) {
+        this.arguments.unshift(...sudoArgs);
+      }
+      nmap.nmapLocation = sudo;
+    }
+
     this.commandConstructor(range, inputArguments);
     this.initializeChildProcess();
   }
