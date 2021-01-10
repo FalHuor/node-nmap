@@ -67,6 +67,7 @@ function convertRawJsonToScanResults(xmlInput) {
       const portList = host.ports[0].port;
 
       const openPorts = portList.filter((port) => {
+        // CW@2020 UPDATE 4.0.2 - less strict test for open port (may contain 'open|filtered')
         return (/^open/i.test(port.state[0].$.state));
       });
 
@@ -78,6 +79,8 @@ function convertRawJsonToScanResults(xmlInput) {
 
         const portObject = {};
 
+        // CW@2020 UPDATE 4.0.1 - check for empty service
+        // some port don't have a service xml tag
         if (portItem.service) {
           const service = portItem.service[0].$.name;
           const tunnel = portItem.service[0].$.tunnel;
@@ -124,6 +127,7 @@ class NmapScan extends EventEmitter {
     this.scanResults;
     this.scanTimeout = 0;
 
+    // CW@2020 UPDATE 4.0.2 - sudo feature (includes constructor parameters)
     if (sudo) {
       this.arguments.unshift(nmap.nmapLocation);
 
