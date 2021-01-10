@@ -80,7 +80,7 @@ function convertRawJsonToScanResults(xmlInput) {
         const portObject = {};
 
         // CW@2020 UPDATE 4.0.1 - check for empty service
-        // some port don't have a service xml tag
+        // some ports don't have a service xml tag
         if (portItem.service) {
           const service = portItem.service[0].$.name;
           const tunnel = portItem.service[0].$.tunnel;
