@@ -31,6 +31,10 @@ let quickscan = new nmap.QuickScan('127.0.0.1 google.com');
 ```
 
 
+UPDATE 3.0.5
+* Added sudo capabilitiy to scan UDP ports on linux (only for NmapScan)
+* Fixed check for open port check (exact string comparison failed for filtered ports)
+
 UPDATE 3.0.4
 * Added extra error handling to detect if NMAP cannot be found a default or passed location.
 
@@ -220,6 +224,19 @@ osandports.startScan();
 //       "osNmap":"OpenBSD 4.3"
 //    }
 // ]
+
+
+//    Scan for TCP and UDP ports with sudo
+var nmapscan = new nmap.NmapScan('127.0.0.1', '-sSU', { sudo: 'sudo', sudoArgs: [] });
+
+nmapscan.on('complete',function(data){
+  console.log(data);
+});
+nmapscan.on('error', function(error){
+  console.log(error);
+});
+
+nmapscan.startScan();
 
 ```
 
