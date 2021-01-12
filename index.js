@@ -85,7 +85,7 @@ function convertRawJsonToScanResults(xmlInput) {
           const service = portItem.service[0].$.name;
           const tunnel = portItem.service[0].$.tunnel;
           const method = portItem.service[0].$.method;
-          // CW@2021 UPDATE 4.03 - product instead of tunnel
+          // CW@2021 UPDATE 4.0.3 - product instead of tunnel
           const product = portItem.service[0].$.product;
 
           if (service) portObject.service = service;

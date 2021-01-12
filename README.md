@@ -1,17 +1,25 @@
 [![Stories in Ready](https://badge.waffle.io/Johnhhorton/node-nmap.png?label=ready&title=Ready)](https://waffle.io/Johnhhorton/node-nmap)
+
 # Node-NMAP
 
 [![Join the chat at https://gitter.im/Johnhhorton/node-nmap](https://badges.gitter.im/Johnhhorton/node-nmap.svg)](https://gitter.im/Johnhhorton/node-nmap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 NPM package enabling your [NodeJs] application to interface with the features of [NMAP].  This package requires that [NMAP] is installed and available to the running node application.
 
+UPDATE 4.0.3
+
+* Opened ports result contains product now.
+
 UPDATE 4.0.2
+
 * Added sudo capabilitiy to scan UDP ports on linux (only for NmapScan)
 * Fixed check for open port check (exact string comparison failed for filtered ports)
 
 UPDATE 4.0.1.forked
+
 * Added checking for undefined of portItem.service otherwise openPorts crashes.
 
 UPDATE 4.0.0
+
 * Changed the code base from TypeScript to pure ES6
 * Removed TypeScript and TS types
 * Added additional port service information to output if available (-sV)
@@ -35,12 +43,15 @@ let quickscan = new nmap.QuickScan('127.0.0.1 google.com');
 ```
 
 UPDATE 3.0.4
+
 * Added extra error handling to detect if NMAP cannot be found a default or passed location.
 
 UPDATE 3.0.3:
+
 * Added NMAP determined Vendor when a MAC address is provided. Credit: [tbwiss](https://github.com/tbwiss)
 
 UPDATE v3: A lot of changes have come in this update:
+
 * Breaking change: All scan classes are now capitalized.
 * Added `scan.scanTimeout` to limit long running scans
 * Added `scan.scanTime` representing the duration of the scan
@@ -56,16 +67,18 @@ As a part of this update, there is an additional mapping for the namespace/modul
 Request:  While `NmapScan()` will accept valid NMAP arguments, the XML to JSON conversion is only checking for specific things.  If there is a common or useful NMAP feature that you would like to see included, please submit an issue and I will work it in.
 
 ## Installation
+
 `npm install node-nmap`
 
 ## Scan Types
+
 * `NmapScan` - This is the core of the package and runs the NMAP command.
 * `QuickScan` - Scans supplied hosts without portscan(-sP).  Use for a quick discovery.
 * `OsAndPortScan` - Scans for open ports as well as NMAP gathered OS information.
 * `QueuedNmapScan` - Queued version for greater control
 * `QueuedQuickScan` - Queued version for greater control
 * `QueuedOsAndPortScan` - Queued version for greater control
- 
+
 ## Scan instance variables, methods, and events
 
 * `scanResults` : Array of host objects - contains the results of the scan.
@@ -78,7 +91,7 @@ Request:  While `NmapScan()` will accept valid NMAP arguments, the XML to JSON c
 
 ## Queued scans instance variables, methods, and events
 
-* `scanTime` : number in ms - collective duration of all scans. 
+* `scanTime` : number in ms - collective duration of all scans.
 * `currentScan` - reference to the current scan object if needed
 * `runActiononError` : boolean(default:false) - run the supplied action function when an error is encountered.
 * `saveErrorsToResults` : boolean(default:false) - save error data to the results array
@@ -88,7 +101,7 @@ Request:  While `NmapScan()` will accept valid NMAP arguments, the XML to JSON c
 * `startShiftScan()` - begins processing entire queue while removing scanned hosts.
 * `pause()` - pauses the queue processing (take affect between scans.).
 * `resume()` - resumes processing the queue.
-* `next(count)` - processes the next `count` queued items.  Default 1. 
+* `next(count)` - processes the next `count` queued items.  Default 1.
 * `shift(count)` - processes the next `count` queued items while removing them from the queue.  Default 1.
 * `results()` - returns Array of current scan result Host objects.
 * `shiftResults()` - returns the first item of the results objects and removes it from the results list.
@@ -118,6 +131,7 @@ The return structure is:
        "osNmap":null, //note that osNmap is not guaranteed to be correct.
     },...]
 ```
+
 ### Examples
 
 ```javascript
@@ -239,7 +253,6 @@ nmapscan.startScan();
 
 ```
 
-
 ## Queued Scans
 
 Queued scanning was implemented to give higher level of control over the scanning process.
@@ -249,6 +262,7 @@ a lengthy set of long running scans on each host.  It would be recommended to pe
 supplying the found hosts to a queued scanning process for longer running scans.
 
 ### Example
+
 ```javascript
 //the actionFunction gets run each time a scan on a host is complete
 function actionFunction(data){
@@ -271,6 +285,6 @@ scan.startRunScan(); //processes entire queue
 
 Please open an issue if you have any questions, concerns, bugs, or critiques.
 
-[NMAP]: <https://nmap.org/>
-[NPM]: <https://www.npmjs.com/>
-[NodeJs]: <https://nodejs.org/en/>
+[NMAP]: https://nmap.org/
+[NPM]: https://www.npmjs.com/
+[NodeJs]: https://nodejs.org/en/
