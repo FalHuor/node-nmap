@@ -173,6 +173,11 @@ class NmapScan extends EventEmitter {
   }
 
   killChild() {
+    if (this.cancelled === true) {
+      // CW@2021: Fix infinite recursion on timeout of nmap command
+      return;
+    }
+
     this.cancelled = true;
     if (this.child) {
       this.child.kill();
