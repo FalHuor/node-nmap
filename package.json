@@ -1,6 +1,6 @@
 {
-  "name": "node-nmap",
-  "version": "4.0.0",
+  "name": "node-sudo-nmap",
+  "version": "4.0.4",
   "description": "Interfaces with locally installed NMAP",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Johnhhorton/node-nmap.git"
+    "url": "git+https://github.com/FalHuor/node-sudo-nmap.git"
   },
   "keywords": [
     "nmap",
@@ -17,9 +17,13 @@
     "scan"
   ],
   "author": "John H Horton",
+  "contributors": [
+    "Christian Wimmer",
+    "Corentin M"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Johnhhorton/node-nmap/issues"
+    "url": "https://github.com/FalHuor/node-sudo-nmap/issues"
   },
   "licenses": [
     {
@@ -27,7 +31,7 @@
       "url": "https://github.com/brentertz/scapegoat/blob/master/LICENSE-MIT"
     }
   ],
-  "homepage": "https://github.com/Johnhhorton/node-nmap#readme",
+  "homepage": "https://github.com/FalHuor/node-sudo-nmap#readme",
   "dependencies": {
     "queued-up": "^2.0.2",
     "xml2js": "^0.4.15"
