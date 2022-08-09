@@ -112,7 +112,7 @@ function convertRawJsonToScanResults(xmlInput) {
 
 
 class NmapScan extends EventEmitter {
-  constructor(range, inputArguments, {sudo, sudoArgs}) {
+  constructor(range, inputArguments, {sudo, sudoArgs} = {}) {
     super();
     this.command = [];
     this.nmapoutputXML = '';
@@ -260,13 +260,13 @@ class NmapScan extends EventEmitter {
 
 
 class QuickScan extends NmapScan {
-  constructor(range) {
-    super(range, '-sP');
+  constructor(range, {sudo, sudoArgs} = {}) {
+    super(range, '-sP', {sudo, sudoArgs});
   }
 }
 class OsAndPortScan extends NmapScan {
-  constructor(range) {
-    super(range, '-O');
+  constructor(range, sudoArgs = []) {
+    super(range, '-O', { sudo: 'sudo', sudoArgs });
   }
 }
 
