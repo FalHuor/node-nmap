@@ -1,9 +1,10 @@
-[![Stories in Ready](https://badge.waffle.io/Johnhhorton/node-nmap.png?label=ready&title=Ready)](https://waffle.io/Johnhhorton/node-nmap)
+# Node-sudo-NMAP
 
-# Node-NMAP
-
-[![Join the chat at https://gitter.im/Johnhhorton/node-nmap](https://badges.gitter.im/Johnhhorton/node-nmap.svg)](https://gitter.im/Johnhhorton/node-nmap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 NPM package enabling your [NodeJs] application to interface with the features of [NMAP].  This package requires that [NMAP] is installed and available to the running node application.
+
+UPDATE 4.0.4
+
+* fix tests & sudo capabilitiy to scan UDP ports on linux for `QuickScan` and `OsAndPortScan`.
 
 UPDATE 4.0.3
 
@@ -68,13 +69,13 @@ Request:  While `NmapScan()` will accept valid NMAP arguments, the XML to JSON c
 
 ## Installation
 
-`npm install node-nmap`
+`npm install node-sudo-nmap`
 
 ## Scan Types
 
 * `NmapScan` - This is the core of the package and runs the NMAP command.
 * `QuickScan` - Scans supplied hosts without portscan(-sP).  Use for a quick discovery.
-* `OsAndPortScan` - Scans for open ports as well as NMAP gathered OS information.
+* `OsAndPortScan` - Scans for open ports as well as NMAP gathered OS information. (execute with sudo privilege)
 * `QueuedNmapScan` - Queued version for greater control
 * `QueuedQuickScan` - Queued version for greater control
 * `QueuedOsAndPortScan` - Queued version for greater control
